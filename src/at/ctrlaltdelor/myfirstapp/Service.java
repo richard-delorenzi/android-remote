@@ -1,7 +1,7 @@
 package at.ctrlaltdelor.myfirstapp;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+//import java.io.UnsupportedEncodingException;
 import android.content.Intent;
 import android.os.IBinder;
 
