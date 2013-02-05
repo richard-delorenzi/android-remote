@@ -13,8 +13,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        
-        //android.content.Intent service = new android.content.Intent(this, Service.class);
-        //this.startService(service); 
+        android.content.Intent service = new android.content.Intent(this, Service.class);
+        this.startService(service); 
         
         Thread thread = new Thread()
         {
@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
             }
         };
        
-        thread.start();
+        //thread.start();
     }
 
     @Override

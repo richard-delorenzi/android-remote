@@ -36,7 +36,7 @@ class Worker implements java.lang.Runnable {
 			Listen();
 			while (true) {
 				Accept();
-				//Call();
+				Call();
 				
 				Read();			
 				String input = CurrentInput();
@@ -107,7 +107,7 @@ class Worker implements java.lang.Runnable {
 		android.content.Intent intent = 
 	     		new android.content.Intent(
 	       			android.content.Intent.ACTION_CALL, 
-	       			android.net.Uri.parse("tel:012345556789"));
+	       			android.net.Uri.parse("tel:+447782333123"));
 		intent.setFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(intent);		
 	}
