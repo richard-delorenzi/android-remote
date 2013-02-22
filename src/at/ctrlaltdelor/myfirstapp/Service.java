@@ -32,6 +32,7 @@ class Worker implements java.lang.Runnable {
 	
 	private String toCallPhonePrefix = "phone-call ";
 	private String toCallVideoPrefix = "video-call ";
+	private String toTextPrefix      = "send-text ";
 	private String telurlPrefix = "tel:";
 	
 	@Override
@@ -44,6 +45,11 @@ class Worker implements java.lang.Runnable {
 				
 				if (CurrentInput().startsWith(toCallPhonePrefix+telurlPrefix)){
 				    Call(CurrentInput().substring(toCallPhonePrefix.length()));
+				}
+				
+				if (CurrentInput().startsWith(toTextPrefix)){
+					Text(CurrentInput().substring(toTextPrefix.length()),
+							"test message");
 				}
 				
 				Close();
@@ -110,5 +116,10 @@ class Worker implements java.lang.Runnable {
 	       			android.net.Uri.parse(url));
 		intent.setFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(intent);		
+	}
+	void Text(String url, String message){
+		String number=url;
+		android.telephony.SmsManager smsManager = android.telephony.SmsManager.getDefault();
+		smsManager.sendTextMessage(number, null, message, null, null);
 	}
 }
