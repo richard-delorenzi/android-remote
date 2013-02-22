@@ -36,15 +36,14 @@ class Worker implements java.lang.Runnable {
 			Listen();
 			while (true) {
 				Accept();
-				Call();
-				
 				Read();			
-				String input = CurrentInput();
 				
-				if (input.equalsIgnoreCase("hello")) {
+				if (CurrentInput().equalsIgnoreCase("hello")) {
 					Write("hello world\n");
 					out.flush();
 				}
+				
+				Call("tel:+447782333123");
 				
 				Close();
 			}
@@ -102,12 +101,12 @@ class Worker implements java.lang.Runnable {
 	{
 		return currentInput.substring(0, indexOfEnd).trim();
 	}	
-	void Call()
+	void Call(String url )
 	{
 		android.content.Intent intent = 
 	     		new android.content.Intent(
 	       			android.content.Intent.ACTION_CALL, 
-	       			android.net.Uri.parse("tel:+447782333123"));
+	       			android.net.Uri.parse(url));
 		intent.setFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(intent);		
 	}
