@@ -30,6 +30,9 @@ class Worker implements java.lang.Runnable {
 		this.context = context;
 	}
 	
+	private String toCallPhonePrefix = "phone-call ";
+	private String telurlPrefix = "tel:";
+	
 	@Override
 	public void run() {
 		try {
@@ -38,12 +41,9 @@ class Worker implements java.lang.Runnable {
 				Accept();
 				Read();			
 				
-				if (CurrentInput().equalsIgnoreCase("hello")) {
-					Write("hello world\n");
-					out.flush();
+				if (CurrentInput().startsWith(toCallPhonePrefix+telurlPrefix)){
+				    Call(CurrentInput().substring(toCallPhonePrefix.length()));
 				}
-				
-				Call("tel:+447782333123");
 				
 				Close();
 			}
@@ -58,7 +58,7 @@ class Worker implements java.lang.Runnable {
 	private java.net.Socket  service;
 	private java.io.OutputStream out;
 	private java.io.InputStream  in;
-	private String currentInput;
+	private String currentInput="";
 	private int indexOfEnd= -1;
 	
 	void Listen() throws IOException
