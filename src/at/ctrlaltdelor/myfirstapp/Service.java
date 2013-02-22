@@ -31,6 +31,7 @@ class Worker implements java.lang.Runnable {
 	}
 	
 	private String toCallPhonePrefix = "phone-call ";
+	private String toCallVideoPrefix = "video-call ";
 	private String telurlPrefix = "tel:";
 	
 	@Override
