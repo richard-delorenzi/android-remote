@@ -1,0 +1,2 @@
+#!/bin/bash
+redir add tcp:60000:60000 | netcat localhost 5554 -q 1
